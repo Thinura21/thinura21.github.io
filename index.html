@@ -3,41 +3,958 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thinura Chandraekara - Web Developer</title>
-    <link rel="stylesheet" href="style.css">
+    <title>⚡ 闇のコーダー - Thinura21 | Dark Developer ⚡</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --blood-red: #ff6b6b;
+            --dark-gold: #ffd93d;
+            --shadow-black: #0d1117;
+            --deep-black: #1a1a1a;
+            --ghost-white: #e6edf3;
+            --mist-gray: #c9d1d9;
+            --border-gray: #30363d;
+            --accent-blue: #58a6ff;
+        }
+
+        body {
+            font-family: 'Fira Code', monospace;
+            background: linear-gradient(135deg, var(--shadow-black) 0%, var(--deep-black) 50%, #161b22 100%);
+            color: var(--ghost-white);
+            line-height: 1.6;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Animated Background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 50%, rgba(255, 107, 107, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(255, 217, 61, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 40% 80%, rgba(88, 166, 255, 0.1) 0%, transparent 50%);
+            z-index: -1;
+            animation: backgroundShift 20s ease-in-out infinite;
+        }
+
+        @keyframes backgroundShift {
+            0%, 100% { opacity: 0.5; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.1); }
+        }
+
+        /* Header Section */
+        header {
+            text-align: center;
+            padding: 80px 0;
+            background: linear-gradient(135deg, rgba(255, 107, 107, 0.1) 0%, rgba(26, 26, 26, 0.8) 100%);
+            border-radius: 20px;
+            margin-bottom: 60px;
+            border: 2px solid rgba(255, 107, 107, 0.3);
+            box-shadow: 0 20px 40px rgba(255, 107, 107, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 107, 107, 0.1), transparent);
+            animation: headerGlow 8s linear infinite;
+        }
+
+        @keyframes headerGlow {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .ascii-art {
+            font-family: 'Fira Code', monospace;
+            font-size: 0.6rem;
+            color: var(--blood-red);
+            margin-bottom: 30px;
+            text-shadow: 0 0 10px var(--blood-red);
+            position: relative;
+            z-index: 2;
+        }
+
+        .main-title {
+            font-size: 4rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--blood-red), var(--dark-gold), var(--accent-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+            text-shadow: 0 0 30px rgba(255, 107, 107, 0.5);
+            position: relative;
+            z-index: 2;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            color: var(--mist-gray);
+            margin-bottom: 30px;
+            font-family: 'Inter', sans-serif;
+            position: relative;
+            z-index: 2;
+        }
+
+        .typing-animation {
+            font-size: 1.2rem;
+            color: var(--blood-red);
+            font-weight: 500;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* About Section */
+        #about {
+            background: linear-gradient(135deg, rgba(13, 17, 23, 0.9) 0%, rgba(26, 26, 26, 0.8) 100%);
+            border: 1px solid var(--border-gray);
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 60px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        }
+
+        .code-block {
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid var(--blood-red);
+            border-radius: 12px;
+            padding: 25px;
+            font-family: 'Fira Code', monospace;
+            color: var(--ghost-white);
+            margin: 20px 0;
+            box-shadow: 0 0 20px rgba(255, 107, 107, 0.2);
+        }
+
+        .code-comment {
+            color: #7c7c7c;
+        }
+
+        .code-keyword {
+            color: var(--blood-red);
+        }
+
+        .code-string {
+            color: var(--dark-gold);
+        }
+
+        .code-number {
+            color: var(--accent-blue);
+        }
+
+        /* Projects Section */
+        #projects {
+            margin-bottom: 60px;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--blood-red);
+            text-align: center;
+            margin-bottom: 50px;
+            text-shadow: 0 0 20px rgba(255, 107, 107, 0.5);
+            position: relative;
+        }
+
+        .section-title::before,
+        .section-title::after {
+            content: '⚔️';
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5rem;
+        }
+
+        .section-title::before {
+            left: -60px;
+        }
+
+        .section-title::after {
+            right: -60px;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 40px;
+        }
+
+        .project-card {
+            background: linear-gradient(135deg, rgba(13, 17, 23, 0.9) 0%, rgba(26, 26, 26, 0.8) 100%);
+            border: 2px solid var(--border-gray);
+            border-radius: 16px;
+            padding: 40px;
+            transition: all 0.4s ease;
+            backdrop-filter: blur(15px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 107, 107, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .project-card:hover::before {
+            left: 100%;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: var(--blood-red);
+            box-shadow: 0 25px 50px rgba(255, 107, 107, 0.3);
+        }
+
+        .project-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .project-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            margin-right: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        .mega-cab-icon {
+            background: linear-gradient(135deg, #ff6b6b, #ff8e53);
+        }
+
+        .safelink-icon {
+            background: linear-gradient(135deg, #4ecdc4, #44a08d);
+        }
+
+        .project-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--ghost-white);
+            margin-bottom: 8px;
+        }
+
+        .project-classification {
+            background: rgba(255, 107, 107, 0.2);
+            border: 1px solid var(--blood-red);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: var(--blood-red);
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .threat-level {
+            margin-bottom: 20px;
+        }
+
+        .threat-bar {
+            background: rgba(255, 255, 255, 0.1);
+            height: 8px;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 8px;
+        }
+
+        .threat-fill {
+            height: 100%;
+            border-radius: 4px;
+            transition: width 2s ease;
+        }
+
+        .threat-80 {
+            background: linear-gradient(90deg, var(--blood-red), var(--dark-gold));
+            width: 80%;
+        }
+
+        .threat-100 {
+            background: linear-gradient(90deg, var(--blood-red), #ff4757);
+            width: 100%;
+        }
+
+        .feature-list {
+            list-style: none;
+            margin: 20px 0;
+        }
+
+        .feature-list li {
+            padding: 8px 0;
+            color: var(--mist-gray);
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .feature-list li::before {
+            content: '⚡';
+            position: absolute;
+            left: 0;
+            color: var(--dark-gold);
+            font-weight: bold;
+        }
+
+        .tech-tags {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin: 25px 0;
+        }
+
+        .tech-tag {
+            background: rgba(88, 166, 255, 0.1);
+            border: 1px solid rgba(88, 166, 255, 0.3);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: var(--accent-blue);
+        }
+
+        .project-links {
+            display: flex;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hunt-link {
+            background: linear-gradient(135deg, var(--blood-red), #ff4757);
+            color: white;
+            box-shadow: 0 8px 16px rgba(255, 107, 107, 0.4);
+        }
+
+        .hunt-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 24px rgba(255, 107, 107, 0.6);
+        }
+
+        .guard-link {
+            background: transparent;
+            color: var(--ghost-white);
+            border: 2px solid var(--border-gray);
+        }
+
+        .guard-link:hover {
+            border-color: var(--accent-blue);
+            color: var(--accent-blue);
+            transform: translateY(-3px);
+        }
+
+        /* Contact Section */
+        #contact {
+            background: linear-gradient(135deg, rgba(13, 17, 23, 0.9) 0%, rgba(26, 26, 26, 0.8) 100%);
+            border: 2px solid var(--blood-red);
+            border-radius: 20px;
+            padding: 50px;
+            text-align: center;
+            margin-bottom: 60px;
+            box-shadow: 0 20px 40px rgba(255, 107, 107, 0.2);
+        }
+
+        .contact-title {
+            font-size: 2rem;
+            color: var(--blood-red);
+            margin-bottom: 20px;
+            text-shadow: 0 0 20px rgba(255, 107, 107, 0.5);
+        }
+
+        .contact-link {
+            color: var(--dark-gold);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .contact-link:hover {
+            color: var(--blood-red);
+            text-shadow: 0 0 10px rgba(255, 107, 107, 0.8);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            border-top: 1px solid var(--border-gray);
+            background: rgba(13, 17, 23, 0.5);
+            backdrop-filter: blur(10px);
+        }
+
+        .footer-quote {
+            font-size: 1.1rem;
+            color: var(--mist-gray);
+            font-style: italic;
+            margin-bottom: 20px;
+            border: 2px solid var(--border-gray);
+            padding: 20px;
+            border-radius: 12px;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .footer-signature {
+            color: var(--blood-red);
+            font-weight: 600;
+            text-align: right;
+            margin-top: 10px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .ascii-art {
+                font-size: 0.4rem;
+            }
+            
+            .main-title {
+                font-size: 2.5rem;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .project-links {
+                flex-direction: column;
+            }
+            
+            .section-title::before,
+            .section-title::after {
+                display: none;
+            }
+        }
+
+        /* Scrollbar Styling */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--shadow-black);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--blood-red);
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #ff4757;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>Thinura Chandraekara</h1>
-            <p>Web Developer | Designer</p>
+            <div class="ascii-art">
+██████╗  █████╗ ██████╗ ██╗  ██╗    ██████╗ ███████╗██╗   ██╗
+██╔══██╗██╔══██╗██╔══██╗██║ ██╔╝    ██╔══██╗██╔════╝██║   ██║
+██║  ██║███████║██████╔╝█████╔╝     ██║  ██║█████╗  ██║   ██║
+██║  ██║██╔══██║██╔══██╗██╔═██╗     ██║  ██║██╔══╝  ╚██╗ ██╔╝
+██████╔╝██║  ██║██║  ██║██║  ██╗    ██████╔╝███████╗ ╚████╔╝ 
+╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝    ╚═════╝ ╚══════╝  ╚═══╝
+            </div>
+            <h1 class="main-title">⚡ 闇のコーダー - Thinura21 ⚡</h1>
+            <p class="subtitle">Full Stack Developer | Mobile & Web Architect | Code Demon 👺</p>
+            <div class="typing-animation">Building Digital Realms in the Shadows 🌒</div>
         </header>
 
         <section id="about">
-            <h2>About Me</h2>
-            <p>Hello! I'm Thinura Chandraekara, a passionate web developer with experience in creating modern and responsive websites. I enjoy bringing ideas to life with code and design.</p>
+            <h2 class="section-title">💀 About This Ghoul</h2>
+            <div class="code-block">
+<span class="code-comment">// The Dark Developer's Profile</span>
+<span class="code-keyword">class</span> <span class="code-string">DarkDeveloper</span> {
+  <span class="code-keyword">constructor</span>() {
+    <span class="code-keyword">this</span>.name = <span class="code-string">"Thinura21"</span>;
+    <span class="code-keyword">this</span>.alias = <span class="code-string">"闇のコーダー (Yami no Kōdā)"</span>;
+    <span class="code-keyword">this</span>.kagune = [<span class="code-string">"JavaScript"</span>, <span class="code-string">"Dart"</span>, <span class="code-string">"CSS"</span>];
+    <span class="code-keyword">this</span>.territory = <span class="code-string">"Full-Stack Development"</span>;
+    <span class="code-keyword">this</span>.rcCells = <span class="code-number">300</span>;
+  }
+
+  <span class="code-keyword">hunt</span>() {
+    <span class="code-keyword">return</span> <span class="code-string">"Building applications that devour bugs 🦠"</span>;
+  }
+
+  <span class="code-keyword">getStrength</span>() {
+    <span class="code-keyword">return</span> <span class="code-keyword">this</span>.kagune.length * <span class="code-number">100</span>;
+  }
+}
+
+<span class="code-keyword">const</span> ghoul = <span class="code-keyword">new</span> DarkDeveloper();
+<span class="code-comment">// Current Mission: Eliminate all bugs in the digital realm</span>
+            </div>
+            <p style="color: var(--mist-gray); font-size: 1.1rem; text-align: center; margin-top: 20px;">
+                Hello darkness, my old friend... I'm Thinura21, a passionate developer who codes in the shadows and deploys in the light. 
+                I specialize in creating modern, responsive applications that solve real-world problems with the precision of a ghoul's kagune.
+            </p>
         </section>
 
         <section id="projects">
-            <h2>Projects</h2>
-            <div class="project">
-                <h3>Project 1: Portfolio Website</h3>
-                <p>A responsive and dynamic portfolio website to showcase my work and skills.</p>
-            </div>
-            <div class="project">
-                <h3>Project 2: E-commerce Website</h3>
-                <p>An e-commerce platform built using HTML, CSS, and JavaScript for smooth user experience.</p>
+            <h2 class="section-title">🏴‍☠️ Blood-Stained Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon mega-cab-icon">🚕</div>
+                        <div>
+                            <h3 class="project-title">MEGA CITY CAB</h3>
+                            <div class="project-classification">S-Class Ghoul Project</div>
+                        </div>
+                    </div>
+                    
+                    <div class="threat-level">
+                        <strong style="color: var(--blood-red);">Threat Level:</strong>
+                        <div class="threat-bar">
+                            <div class="threat-fill threat-80"></div>
+                        </div>
+                        <span style="color: var(--dark-gold);">80% - ACTIVE HUNTING</span>
+                    </div>
+                    
+                    <p style="color: var(--mist-gray); margin-bottom: 20px;">
+                        A comprehensive taxi booking and fleet management system built with modern web technologies. 
+                        This advanced programming assignment demonstrates full-stack development capabilities with real-time features.
+                    </p>
+                    
+                    <ul class="feature-list">
+                        <li>Real-time prey tracking system</li>
+                        <li>Lightning-fast booking algorithms</li>
+                        <li>Driver soul management</li>
+                        <li>Payment blood extraction</li>
+                        <li>Administrative dominion</li>
+                    </ul>
+                    
+                    <div class="tech-tags">
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">Node.js</span>
+                        <span class="tech-tag">Express.js</span>
+                        <span class="tech-tag">MongoDB</span>
+                    </div>
+                    
+                    <div class="project-links">
+                        <a href="https://github.com/Thinura21/Mege_Cab_Web" class="project-link hunt-link">🔗 ENTER THE HUNT</a>
+                        <a href="#" class="project-link guard-link">👁️ LIVE DEMO</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon safelink-icon">🛡️</div>
+                        <div>
+                            <h3 class="project-title">SAFELINK</h3>
+                            <div class="project-classification">SSS-Class Guardian Project</div>
+                        </div>
+                    </div>
+                    
+                    <div class="threat-level">
+                        <strong style="color: var(--blood-red);">Threat Level:</strong>
+                        <div class="threat-bar">
+                            <div class="threat-fill threat-100"></div>
+                        </div>
+                        <span style="color: var(--blood-red);">100% - PROTECTION MODE ACTIVE</span>
+                    </div>
+                    
+                    <p style="color: var(--mist-gray); margin-bottom: 20px;">
+                        A life-saving mobile application and web dashboard designed for emergency support and crisis management. 
+                        Built with Dart/Flutter, SafeLink provides instant access to emergency services.
+                    </p>
+                    
+                    <ul class="feature-list">
+                        <li>One-touch emergency summoning</li>
+                        <li>Real-time location binding</li>
+                        <li>Emergency contact legion</li>
+                        <li>Crisis communication network</li>
+                        <li>Web monitoring fortress</li>
+                    </ul>
+                    
+                    <div class="tech-tags">
+                        <span class="tech-tag">Dart</span>
+                        <span class="tech-tag">Flutter</span>
+                        <span class="tech-tag">Firebase</span>
+                        <span class="tech-tag">Google Maps API</span>
+                    </div>
+                    
+                    <div class="project-links">
+                        <a href="https://github.com/Thinura21/safelink" class="project-link hunt-link">🔗 JOIN THE GUARD</a>
+                        <a href="#" class="project-link guard-link">📱 DOWNLOAD APP</a>
+                    </div>
+                </div>
             </div>
         </section>
 
         <section id="contact">
-            <h2>Contact</h2>
-            <p>If you'd like to get in touch, feel free to email me at <a href="mailto:thinura@example.com">thinura@example.com</a></p>
+            <h2 class="contact-title">⚔️ Connect with the Dark Developer ⚔️</h2>
+            <p style="color: var(--mist-gray); font-size: 1.1rem; margin-bottom: 20px;">
+                If you dare to enter my realm or need a fellow ghoul for your next project...
+            </p>
+            <p style="font-size: 1.2rem;">
+                Reach out through the shadows: 
+                <a href="mailto:thinura@example.com" class="contact-link">thinura@example.com</a>
+            </p>
+            <p style="color: var(--mist-gray); margin-top: 20px; font-size: 0.9rem;">
+                🩸 Available for freelance hunting missions and code collaborations 🩸
+            </p>
         </section>
 
         <footer>
-            <p>&copy; 2024 Thinura Chandraekara. All rights reserved.</p>
+            <div class="footer-quote">
+                "In this world of code, you're either a predator or prey.<br>
+                I choose to be the hunter."
+                <div class="footer-signature">- 闇鬼 (Yami Oni)</div>
+            </div>
+            <p style="color: var(--mist-gray);">&copy; 2024 Thinura21 - The Dark Developer. All souls reserved. 🌙</p>
         </footer>
+    </div>
+
+    <script>
+        // Add some interactive animations
+        document.addEventListener('DOMContentLoaded', function() {
+            // Threat level animation
+            setTimeout(() => {
+                const threatBars = document.querySelectorAll('.threat-fill');
+                threatBars.forEach(bar => {
+                    bar.style.width = bar.classList.contains('threat-100') ? '100%' : '80%';
+                });
+            }, 1000);
+
+            // Project card hover effects
+            const projectCards = document.querySelectorAll('.project-card');
+            projectCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-10px) scale(1.02)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+        }
+
+        .project-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 8px;
+            margin-right: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .mega-cab-icon {
+            background: linear-gradient(135deg, #ffcc02, #ff9500);
+        }
+
+        .safelink-icon {
+            background: linear-gradient(135deg, #00d4aa, #00b386);
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #f0f6fc;
+            margin-bottom: 5px;
+        }
+
+        .project-subtitle {
+            color: #7d8590;
+            font-size: 0.9rem;
+        }
+
+        .project-description {
+            color: #c9d1d9;
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+
+        .project-features {
+            margin-bottom: 25px;
+        }
+
+        .project-features h4 {
+            color: #f0f6fc;
+            margin-bottom: 10px;
+            font-size: 1rem;
+        }
+
+        .feature-list {
+            list-style: none;
+        }
+
+        .feature-list li {
+            color: #c9d1d9;
+            margin-bottom: 5px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .feature-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #238636;
+            font-weight: bold;
+        }
+
+        .project-tech {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .tech-tag {
+            background: rgba(240, 246, 252, 0.1);
+            border: 1px solid rgba(240, 246, 252, 0.2);
+            padding: 4px 12px;
+            border-radius: 16px;
+            font-size: 0.85rem;
+            color: #e6edf3;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .primary-link {
+            background: #238636;
+            color: white;
+        }
+
+        .primary-link:hover {
+            background: #2ea043;
+        }
+
+        .secondary-link {
+            background: transparent;
+            color: #f0f6fc;
+            border: 1px solid #30363d;
+        }
+
+        .secondary-link:hover {
+            border-color: #58a6ff;
+            color: #58a6ff;
+        }
+
+        .stats {
+            background: rgba(13, 17, 23, 0.8);
+            border: 1px solid #30363d;
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .stats h3 {
+            color: #f0f6fc;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+
+        .stat-item {
+            display: inline-block;
+            margin: 0 20px;
+            text-align: center;
+        }
+
+        .stat-number {
+            display: block;
+            font-size: 2rem;
+            font-weight: bold;
+            color: #58a6ff;
+        }
+
+        .stat-label {
+            color: #7d8590;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .projects {
+                grid-template-columns: 1fr;
+            }
+            
+            .project-links {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="hero">
+            <div class="profile-img"></div>
+            <h1>Thinura21</h1>
+            <p>Full-Stack Developer | Mobile & Web Solutions | Building innovative applications for real-world challenges</p>
+            
+            <div class="tech-stack">
+                <span class="tech-badge">JavaScript</span>
+                <span class="tech-badge">Dart</span>
+                <span class="tech-badge">CSS</span>
+                <span class="tech-badge">Mobile Development</span>
+                <span class="tech-badge">Web Development</span>
+            </div>
+        </div>
+
+        <div class="projects">
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-icon mega-cab-icon">🚕</div>
+                    <div>
+                        <h3 class="project-title">Mega City Cab</h3>
+                        <p class="project-subtitle">Advanced Programming Assignment</p>
+                    </div>
+                </div>
+                
+                <p class="project-description">
+                    A comprehensive taxi booking and management system built with modern web technologies. 
+                    This advanced programming assignment demonstrates full-stack development capabilities 
+                    with real-time booking, driver management, and route optimization features.
+                </p>
+                
+                <div class="project-features">
+                    <h4>Key Features:</h4>
+                    <ul class="feature-list">
+                        <li>Real-time taxi booking system</li>
+                        <li>Driver and passenger management</li>
+                        <li>Route optimization algorithms</li>
+                        <li>Payment integration system</li>
+                        <li>Admin dashboard for fleet management</li>
+                    </ul>
+                </div>
+                
+                <div class="project-tech">
+                    <span class="tech-tag">JavaScript</span>
+                    <span class="tech-tag">Node.js</span>
+                    <span class="tech-tag">MongoDB</span>
+                    <span class="tech-tag">Express.js</span>
+                </div>
+                
+                <div class="project-links">
+                    <a href="https://github.com/Thinura21/Mege_Cab_Web" class="project-link primary-link">View Project</a>
+                    <a href="#" class="project-link secondary-link">Live Demo</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-icon safelink-icon">🛡️</div>
+                    <div>
+                        <h3 class="project-title">SafeLink</h3>
+                        <p class="project-subtitle">Emergency Support Mobile App</p>
+                    </div>
+                </div>
+                
+                <p class="project-description">
+                    A life-saving mobile application and web dashboard designed for emergency support and crisis management. 
+                    Built with Dart/Flutter, SafeLink provides instant access to emergency services with location tracking 
+                    and real-time communication features.
+                </p>
+                
+                <div class="project-features">
+                    <h4>Key Features:</h4>
+                    <ul class="feature-list">
+                        <li>One-tap emergency alerts</li>
+                        <li>Real-time location sharing</li>
+                        <li>Emergency contacts management</li>
+                        <li>Crisis communication tools</li>
+                        <li>Web dashboard for monitoring</li>
+                    </ul>
+                </div>
+                
+                <div class="project-tech">
+                    <span class="tech-tag">Dart</span>
+                    <span class="tech-tag">Flutter</span>
+                    <span class="tech-tag">Firebase</span>
+                    <span class="tech-tag">Google Maps API</span>
+                </div>
+                
+                <div class="project-links">
+                    <a href="https://github.com/Thinura21/safelink" class="project-link primary-link">View Project</a>
+                    <a href="#" class="project-link secondary-link">Download App</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="stats">
+            <h3>Development Activity</h3>
+            <div class="stat-item">
+                <span class="stat-number">28</span>
+                <span class="stat-label">Contributions</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">2</span>
+                <span class="stat-label">Major Projects</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">3</span>
+                <span class="stat-label">Technologies</span>
+            </div>
+        </div>
     </div>
 </body>
 </html>
